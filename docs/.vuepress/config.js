@@ -12,10 +12,10 @@ module.exports = {
             platform: 'github',
 
             // 其他的 Vssue 配置
-            owner: 'OWNER_OF_REPO',
-            repo: 'NAME_OF_REPO',
-            clientId: 'YOUR_CLIENT_ID',
-            clientSecret: 'YOUR_CLIENT_SECRET',
+            owner: 'moreant',
+            repo: 'notebook',
+            clientId: '15200460713de3351c06',
+            clientSecret: '8081c554ae6faea720b386f7c71b724923a8d162',
         },]
     ],
     locales: {
@@ -33,7 +33,7 @@ module.exports = {
                 '',
             ]
         },
-        lastUpdated: 'Last Updated',
+        lastUpdated: '上次更新',
         nav: [
             { text: 'Hello', link: '/' },
             { text: 'springBoot', link: '/spring-boot/' },
