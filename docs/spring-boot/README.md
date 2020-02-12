@@ -26,6 +26,12 @@ lang: zh-CN
 
 
 
+**本文主要参考笔记：**
+
+[SYL的笔记](https://cloudlandboy.github.io/myNote/#/backend/springboot/_sidebar)
+
+
+
 ## 适用版本
 
 撰写笔记时各个组件的版本如下：

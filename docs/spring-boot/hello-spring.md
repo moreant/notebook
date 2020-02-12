@@ -12,7 +12,7 @@
 
 添加以下内容到 `mirros` 中
 
-```xml
+``` xml
 <mirror>  
       <id>alimaven</id>  
       <name>aliyun maven</name>  
@@ -37,17 +37,54 @@
 
 ![](http://markdown.yeek.top/20200210230028.png)
 
-
-
-
-
-
-
-
+![](http://markdown.yeek.top/20200212172511.png)
 
 
 
 ## 编写接口
+
+在 `/src/main/java/包名` 下新建 controller.HelloController.class
+
+``` java
+package com.mojuchen.vue.controller;
+
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+/**
+ * RestController：是spring4里的新注解，是@ResponseBody和@Controller的缩写。
+ */
+@RestController
+public class HelloController {
+
+    @RequestMapping("/hello")
+    public String hello(){
+        return "hello SpringBoot,this is my first Application";
+    }
+}
+```
+
+
+
+## 启动 APP
+
+进入包名下的 Application.class 运行 `主类`
+
+![](http://markdown.yeek.top/20200212220714.png)
+
+或者直接在 IDEA 右上角启动
+
+![](http://markdown.yeek.top/20200212220634.png)
+
+启动后可以在控制台里看到启动了 `Tomcat` 服务，并且监听的是 `2333` 端口
+
+![](http://markdown.yeek.top/20200212220814.png)
+
+
+
+访问
+
+http://localhost:2333/hello 
 
 
 
