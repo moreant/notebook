@@ -61,6 +61,11 @@
   <script src="//unpkg.com/prismjs/components/prism-yaml.js"></script>
   <script src="//unpkg.com/prismjs/components/prism-xml.js"></script>
   <script>
+    if (typeof navigator.serviceWorker !== 'undefined') {
+      navigator.serviceWorker.register('sw.js')
+    }
+  </script>
+  <script>
     const gitalk = new Gitalk({
       clientID: '15200460713de3351c06',
       clientSecret: '8081c554ae6faea720b386f7c71b724923a8d162',
@@ -71,6 +76,7 @@
       distractionFreeMode: false
     })
   </script>
+
 </body>
 
 </html>
