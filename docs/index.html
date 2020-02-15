@@ -17,7 +17,7 @@
   <div id="app">加载中。。。</div>
   <script>
     window.$docsify = {
-      name: 'Moreant Notes',
+      name: "Moreant's notes",
       repo: '',
       // themeColor: '#3498db',
       loadSidebar: true,
@@ -41,8 +41,8 @@
             var url =
               'https://github.com/moreant/notebook/edit/master/' +
               vm.route.file;
-            var editHtml = `<hr><p>💬 本页更新于 {docsify-updated} <span style='float:right;'>[在 GitHub 上编辑 📝](${url})</span> </p>`;
-
+            var editHtml =
+              `<hr><p>💬 本页更新于 {docsify-updated} <a href="${url}" target="_blank" style="float:right;">在 GitHub 上编辑 📝</a></p>`;
             return (html + editHtml);
           });
         }

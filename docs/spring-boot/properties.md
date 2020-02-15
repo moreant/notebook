@@ -637,3 +637,6 @@ java -jar xxx.jar --spring.config.location=/home/cloudlandboy/application.yaml
 
 
 ## 自动配置原理
+
+
+

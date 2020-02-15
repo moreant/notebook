@@ -1,6 +1,6 @@
 ![logo](_media/logo.png)
 
-# Moreant <small>Notes</small>
+# Moreant's notes <small>2020</small>
 
 
 
@@ -8,8 +8,8 @@
 
 
 
-* 学习性笔记本
-* 骚操作请去 Blog
+* 学习型笔记本，更新完全随缘
+* 想看骚操作的请去 Blog
 
 
 
