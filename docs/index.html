@@ -35,8 +35,14 @@
         buttonText: '复制到粘贴板',
         errorText: '错误',
         successText: '成功'
-      }
-
+      },
+      plugins: [
+        EditOnGithubPlugin.create(
+          'https://github.com/moreant/notebook/master/docs/',
+          null,
+          '编辑'
+        )
+      ]
     }
   </script>
   <script src="//unpkg.com/docsify/lib/docsify.min.js"></script>
