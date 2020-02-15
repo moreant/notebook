@@ -10,13 +10,13 @@ Spring Boot 使用一个全局的配置文件，配置文件名`application`是�
 
 
 
-## - YAML
+## YAML
 
  YAML：**以数据为中心**，比 json、xml等更适合做配置文件
 
 
 
-### - 语法
+### 语法
 
 以 `空格` 的缩进来控制层级关系；只要是左对齐的一列数据，都是同一个层级的
 
@@ -26,7 +26,7 @@ Spring Boot 使用一个全局的配置文件，配置文件名`application`是�
 
 
 
-### - 字面量：普通的值
+### 字面量：普通的值
 
 `k: v`
 
@@ -38,7 +38,7 @@ Spring Boot 使用一个全局的配置文件，配置文件名`application`是�
 
 **eg**:
 
-``` yaml
+```yaml
 name: "zhangsan \n lisi"
 ```
 
@@ -53,7 +53,7 @@ lisi
 
 **eg:**
 
-``` yaml
+```yaml
 name: 'zhangsan \n lisi'
 ```
 
@@ -65,13 +65,13 @@ zhangsan \n lisi
 
 
 
-### - 对象、Map （属性和值）
+### 对象、Map （属性和值）
 
 `k: v`在下一行来写对象的属性和值的关系；注意缩进
 
 **eg:**
 
-``` yaml
+```yaml
 person:
   name: 张三
   gender: 男
@@ -80,17 +80,17 @@ person:
 
 **行内写法：**
 
-``` yaml
+```yaml
 person: {name: 张三,gender: 男,age: 22}
 ```
 
 
 
-## - 配置文件注入
+## 配置文件注入
 
 在 `pron.xml` 文件中加入
 
-``` xml
+```xml
         <!--导入配置文件处理器，配置文件进行绑定就会有提示-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -105,7 +105,7 @@ person: {name: 张三,gender: 男,age: 22}
 
 ::: details 点击查看代码
 
-``` java
+```java
 package top.yeek.vue.bean;
 
 import org.springframework.stereotype.Component;
@@ -205,7 +205,7 @@ public class Person {
 
 新建 `application.yml` ，存放配置信息
 
-``` yaml
+```yaml
 person:
   name: 张三
   age: 20
@@ -239,7 +239,7 @@ person.dog.age=3
 
 
 
-## - @ConfigurationProperties 获取全局配置
+## @ConfigurationProperties 获取全局配置
 
 
 
@@ -286,7 +286,7 @@ class VueApplicationTests {
 
 
 
-### - 解决乱码问题
+### 解决乱码问题
 
 在设置中搜索 `file encodings` 统统设置成 `UTF-8`
 
@@ -302,20 +302,20 @@ class VueApplicationTests {
 
 
 
-##  - @value 获取配置
+##  @value 获取配置
 
 配置文件值注入有两种方式，一个是Spring Boot的`@ConfigurationProperties`注解，另一个是spring原先的`@value`注解
 
 
 
-### - 读取配置文件中的值
+### 读取配置文件中的值
 
 ``` java
 @Value("${person.name}")
 private String name;
 ```
 
-### - 运算值
+### 运算值
 
 ``` java
 @Value("#{11*3}")
@@ -324,7 +324,7 @@ private Integer age;
 
 
 
-### - 区别
+### 区别
 
 |                      | @ConfigurationProperties | @Value     |
 | -------------------- | ------------------------ | ---------- |
@@ -340,7 +340,7 @@ private Integer age;
 
 
 
-## - @PropertySource
+## @PropertySource
 
 用于加载指定的 propertise 配置文件，默认不支持 yml
 
@@ -358,7 +358,7 @@ public class Person {
 
 
 
-## - @ImportResource
+## @ImportResource
 
 用于导入 Spring 的配置文件，让配置文件里面的内容生效；(就是以前写的springmvc.xml、applicationContext.xml)
 
@@ -368,7 +368,7 @@ public class Person {
 
 
 
-## - @Configuration（推荐）
+## @Configuration（推荐）
 
 Spring Boot 推荐给容器中添加组件的方式——全注解。
 
@@ -376,7 +376,7 @@ Spring Boot 推荐给容器中添加组件的方式——全注解。
 
 
 
-### - @Bean
+### @Bean
 
 将方法中的返回值添加到容器中，容器中这个组件默认的 id 就是方法名
 
@@ -459,7 +459,7 @@ false
 
 
 
-## - 配置文件占位符
+## 配置文件占位符
 
 随机值
 
@@ -481,13 +481,13 @@ person.dog.name=${person.name}
 
 
 
-## - Profile
+## Profile
 
 Profile是Spring对不同环境提供不同配置功能的支持，可以通过激活、指定参数等方式快速切换环境
 
 
 
-### - 多 Profile 文件
+### 多 Profile 文件
 
 文件名格式：application-{profile}.properties/yml，例如：
 
@@ -512,7 +512,7 @@ spring.profiles.active=prod
 ```
 
 
-### - YAML 文档块
+### YAML 文档块
 
 使用 `---` 来分割
 
@@ -542,7 +542,7 @@ spring:
 
 
 
-### - 命令行激活
+### 命令行激活
 
 在命令行中加入参数
 
@@ -566,7 +566,7 @@ java -jar xxx.jar --spring.profiles.active=dev；
 
 
 
-## - 配置文件加载位置
+## 配置文件加载位置
 
 Spring Boot 会扫描以下位置的配置文件作为默认配置文件。
 
@@ -593,7 +593,7 @@ java -jar xxx.jar --spring.config.location=/home/cloudlandboy/application.yaml
 
 
 
-## - 外部配置加载顺序
+## 外部配置加载顺序
 
 **SpringBoot也可以从以下位置加载配置； 优先级从高到低；高优先级的配置覆盖低优先级的配置，所有的配置会形成互补配置**
 
@@ -636,4 +636,4 @@ java -jar xxx.jar --spring.config.location=/home/cloudlandboy/application.yaml
 
 
 
-## - 自动配置原理
+## 自动配置原理

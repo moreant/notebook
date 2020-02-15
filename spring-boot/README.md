@@ -1,7 +1,3 @@
----
-lang: zh-CN
----
-
 
 
 # 前期准备
@@ -18,11 +14,7 @@ lang: zh-CN
 
 [IDEA](https://www.jetbrains.com/idea/)
 
-::: tip
-
-学生可以免费申请正版授权
-
-:::
+!> 学生可以免费 [申请](https://www.jetbrains.com/zh/student/) 正版全家桶授权
 
 
 
