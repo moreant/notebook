@@ -27,7 +27,7 @@ module.exports = {
         }
     },
     themeConfig: {
-        sidebarDepth: 2,
+        sidebarDepth: 3,
         sidebar: {
             '/spring-boot/': [
                 '',

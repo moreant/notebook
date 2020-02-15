@@ -10,13 +10,13 @@ Spring Boot 使用一个全局的配置文件，配置文件名`application`是�
 
 
 
-## YAML
+## - YAML
 
  YAML：**以数据为中心**，比 json、xml等更适合做配置文件
 
 
 
-### 语法
+### - 语法
 
 以 `空格` 的缩进来控制层级关系；只要是左对齐的一列数据，都是同一个层级的
 
@@ -26,7 +26,7 @@ Spring Boot 使用一个全局的配置文件，配置文件名`application`是�
 
 
 
-### 字面量：普通的值
+### - 字面量：普通的值
 
 `k: v`
 
@@ -65,7 +65,7 @@ zhangsan \n lisi
 
 
 
-### 对象、Map （属性和值）
+### - 对象、Map （属性和值）
 
 `k: v`在下一行来写对象的属性和值的关系；注意缩进
 
@@ -86,7 +86,7 @@ person: {name: 张三,gender: 男,age: 22}
 
 
 
-## 配置文件注入
+## - 配置文件注入
 
 在 `pron.xml` 文件中加入
 
@@ -239,7 +239,7 @@ person.dog.age=3
 
 
 
-### @ConfigurationProperties 获取全局配置
+## - @ConfigurationProperties 获取全局配置
 
 
 
@@ -286,7 +286,7 @@ class VueApplicationTests {
 
 
 
-### 解决乱码问题
+### - 解决乱码问题
 
 在设置中搜索 `file encodings` 统统设置成 `UTF-8`
 
@@ -302,20 +302,20 @@ class VueApplicationTests {
 
 
 
-###  @value 获取配置
+##  - @value 获取配置
 
 配置文件值注入有两种方式，一个是Spring Boot的`@ConfigurationProperties`注解，另一个是spring原先的`@value`注解
 
 
 
-#### 读取配置文件中的值
+### - 读取配置文件中的值
 
 ``` java
 @Value("${person.name}")
 private String name;
 ```
 
-#### 运算值
+### - 运算值
 
 ``` java
 @Value("#{11*3}")
@@ -324,7 +324,7 @@ private Integer age;
 
 
 
-#### 区别
+### - 区别
 
 |                      | @ConfigurationProperties | @Value     |
 | -------------------- | ------------------------ | ---------- |
@@ -340,7 +340,7 @@ private Integer age;
 
 
 
-### @PropertySource
+## - @PropertySource
 
 用于加载指定的 propertise 配置文件，默认不支持 yml
 
@@ -358,9 +358,282 @@ public class Person {
 
 
 
-### @ImportResource
+## - @ImportResource
 
 用于导入 Spring 的配置文件，让配置文件里面的内容生效；(就是以前写的springmvc.xml、applicationContext.xml)
 
 <Vssue title="hello-spring" />
 
+
+
+
+
+## - @Configuration（推荐）
+
+Spring Boot 推荐给容器中添加组件的方式——全注解。
+
+@Configuration：**指明当前类是一个配置类**，用来替代之前的 Spring 配置文件
+
+
+
+### - @Bean
+
+将方法中的返回值添加到容器中，容器中这个组件默认的 id 就是方法名
+
+
+
+**eg:**
+
+在包目录下新建 `server.HelloServer.java` 文件，内容如下
+
+``` java
+package top.yeek.vue.server;
+
+/**
+ * @author moreant
+ * @date 2020/02/13 17:31
+ */
+public class HelloService {
+}
+
+```
+
+在包目录下新建 `config.AppConfig.class` 文件，内容如下
+
+``` java
+package top.yeek.vue.config;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import top.yeek.vue.server.HelloService;
+
+/**
+ * @author moreant
+ * @date 2020/02/13 17:18
+ */
+@Configuration
+public class AppConfig {
+
+    @Bean
+    public HelloService helloServer(){
+        System.out.println("添加组件");
+        return new HelloService();
+    }
+}
+```
+
+在单元测试文件 `ApplicationTest.java` 中**添加**
+
+``` java
+    @Autowired
+    ApplicationContext ioc;
+
+    @Test
+    public void testHelloServer(){
+        boolean b = ioc.containsBean("helloServer");
+        System.out.println(b);
+    }
+```
+
+运行 `testHelloServer` ，在控制台中依次输出
+
+```
+添加组件
+true
+```
+
+
+
+当修改文件 `AppConfig.java` 中的方法名或者修改 `containsBean` 中的值后再运行 `testHelloServer` 
+
+控制台中的结果是
+
+```
+添加组件
+false
+```
+
+
+
+![](http://markdown.yeek.top/20200213174525.png)
+
+
+
+## - 配置文件占位符
+
+随机值
+
+``` properties
+person.age=${random.int}
+person.dog.age=${random.uuid}
+```
+
+
+
+引用值
+
+``` properties
+person.name=王五
+person.dog.name=${person.name}
+```
+
+
+
+
+
+## - Profile
+
+Profile是Spring对不同环境提供不同配置功能的支持，可以通过激活、指定参数等方式快速切换环境
+
+
+
+### - 多 Profile 文件
+
+文件名格式：application-{profile}.properties/yml，例如：
+
+- application-dev.properties
+
+``` properties
+server.port=8080
+```
+
+- application-prod.properties
+
+``` properties
+server.port=80
+```
+
+程序启动时会默认加载`application.properties`，可以在主配置文件中指定激活哪个配置文件
+
+eg: 激活生产环境的 `Profile`
+
+``` properties
+spring.profiles.active=prod
+```
+
+
+### - YAML 文档块
+
+使用 `---` 来分割
+
+eg:
+
+``` yaml
+server:
+  port: 8080
+# application.properties 的优先级高于 YAML  
+spring:
+  profiles:
+    active: dev
+---
+
+server:
+  port: 2333
+spring:
+  profiles: dev
+
+
+---
+server:
+  port: 80
+spring:
+  profiles: prod
+```
+
+
+
+### - 命令行激活
+
+在命令行中加入参数
+
+``` 
+--spring.profiles.active=dev
+```
+
+1. 在打包后加入
+
+```
+java -jar xxx.jar --spring.profiles.active=dev；
+```
+
+2. 在 IDEA 中加入
+
+![](http://markdown.yeek.top/20200214235527.png)
+
+3. 在虚拟机中加入
+
+![](http://markdown.yeek.top/20200215000138.png)
+
+
+
+## - 配置文件加载位置
+
+Spring Boot 会扫描以下位置的配置文件作为默认配置文件。
+
+优先级如下，高优先级配置会**覆盖**低优先级配置
+
+1.  file: ./config/
+2.  file: ./
+3. classpath: /config/
+4. classpath: /
+
+SpringBoot会从这四个位置全部加载主配置文件；**互补配置**；
+
+
+
+还可以使用 `spring.config.location `来改变默认的配置文件位置
+
+**项目打包好以后，我们可以使用命令行参数的形式，启动项目的时候来指定配置文件的新位置；指定配置文件和默认加载的这些配置文件共同起作用形成互补配置；**
+
+*eg:*
+
+```
+java -jar xxx.jar --spring.config.location=/home/cloudlandboy/application.yaml
+```
+
+
+
+## - 外部配置加载顺序
+
+**SpringBoot也可以从以下位置加载配置； 优先级从高到低；高优先级的配置覆盖低优先级的配置，所有的配置会形成互补配置**
+
+1. **命令行参数** 
+
+   所有的配置都可以在命令行上进行指定多个配置用空格分开
+
+   `--{配置项}={值}`
+
+   ```
+   java -jar xxx.jar --server.port=8087  --server.context-path=/abcCopy to clipboardErrorCopied
+   ```
+
+2. 来自 java:comp/env 的JNDI属性
+
+3. Java系统属性（System.getProperties()）
+
+4. 操作系统环境变量
+
+5. RandomValuePropertySource配置的random.*属性值
+
+<br>
+
+**优先加载带 profile，再来加载不带 profile，由 jar 包外向内进行寻找**
+
+6. jar包外部的 `application-{profile}.properties` 或 `application.yml `(带spring.profile)配置文件 
+7. jar包内部的 `application-{profile}.properties` 或 `application.yml` (带spring.profile)配置文件 
+
+8. jar包外部的 `application.properties` 或 `application.yml` (不带spring.profile)配置文件 
+9. jar包内部的 `application.properties` 或 `application.yml` (不带spring.profile)配置文件 
+
+<br>
+
+10. `@Configuration` 注解类上的 `@PropertySource`
+11. 通过 `SpringApplication.setDefaultProperties` 指定的默认属性 
+
+所有支持的配置加载来源：
+
+[参考官方文档](https://docs.spring.io/spring-boot/docs/2.2.1.RELEASE/reference/htmlsingle/#boot-features-external-config)
+
+
+
+## - 自动配置原理
