@@ -25,8 +25,7 @@
       loadNavbar: true,
       coverpage: true,
       repo: 'moreant/notebook',
-      autoHeader: true,
-      formatUpdated: '{MM}/{DD} {HH}:{mm}',
+      formatUpdated: '{YYYY}-{MM}-{DD} {HH}:{mm}',
       search: {
         placeholder: '搜索',
         noData: '没有找到!',
@@ -36,13 +35,24 @@
         errorText: '错误',
         successText: '成功'
       },
-      
+      plugins: [
+        function (hook, vm) {
+          hook.beforeEach(function (html) {
+            var url =
+              'https://github.com/moreant/notebook/edit/master/' +
+              vm.route.file;
+            var editHtml = `<hr><p>💬 本页更新于 {docsify-updated} <span style='float:right;'>[在 GitHub 上编辑 📝](${url})</span> </p>`;
+
+            return (html + editHtml);
+          });
+        }
+      ]
     }
   </script>
   <script src="//unpkg.com/docsify/lib/docsify.min.js"></script>
   <script src="//unpkg.com/docsify/lib/plugins/search.js"></script>
+  <script src="//unpkg.com/docsify/lib/plugins/emoji.js"></script>
   <script src="//unpkg.com/docsify/lib/plugins/zoom-image.js"></script>
-  <script src="//unpkg.com/docsify-edit-on-github/index.js"></script>
   <script src="//unpkg.com/docsify/lib/plugins/gitalk.min.js"></script>
   <script src="//unpkg.com/gitalk/dist/gitalk.min.js"></script>
   <script src="//unpkg.com/docsify/lib/plugins/external-script.min.js"></script>
