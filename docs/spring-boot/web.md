@@ -79,3 +79,12 @@ classpath:/public/
 [http://localhost:8080/test.html]()
 
 访问 `test.html` 文件
+
+
+
+### 欢迎文件(index.html)
+
+同样是在 `WebMvcAutoConfiguration.class` 中，处理欢迎页面是在 `WelcomePageHandlerMapping` 方法中
+
+![](http://markdown.yeek.top/20200225011107.png)
+
