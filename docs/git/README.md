@@ -1,4 +1,4 @@
-## push / pull  -u
+## push -u
 
 `-u` 指定上游分支，在 `push` 或 `pull` 时加入这个参数，如下
 
@@ -6,7 +6,7 @@
 $ git push -u origin master 
 ```
 
-之后的 `push`/`pull` 都可以不带参数，默认指向 `origin` 的 `master` 分支
+之后的 `push`都可以不带参数，默认指向 `origin` 的 `master` 分支
 
 
 

@@ -36,7 +36,7 @@ Spring Boot 使用一个全局的配置文件，配置文件名`application`是�
 
 ` "" `：双引号；不会转义字符串里面的特殊字符；特殊字符会作为本身想表示的意思
 
-**eg**:
+**eg:**
 
 ```yaml
 name: "zhangsan \n lisi"
@@ -638,5 +638,19 @@ java -jar xxx.jar --spring.config.location=/home/cloudlandboy/application.yaml
 
 ## 自动配置原理
 
+?> 建议看老师的视频会更好点 [自动配置](https://www.bilibili.com/video/av38657363/?p=18)
 
 
+
+
+
+## 查看那些自动配置类生效了
+
+自动配置类必须在一定的条件下才能生效；
+
+我们怎么知道哪些自动配置类生效了；
+
+我们可以通过配置文件启用 `debug=true`属性；来让控制台打印自动配置报告，这样我们就可以很方便的知道哪些自动配置类生效；
+
+- `Positive matches` ：（自动配置类启用的）
+- `Negative matches`：（没有启动，没有匹配成功的自动配置类）
