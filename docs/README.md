@@ -20,7 +20,9 @@
 
 ## 进度
 
-`Spring Boot` 还在学，笔记更新中
+`Spring Boot` 换了个教程
+
+现在在学 `MongoDB`
 
 `vue` 学了点，有个项目，笔记待补
 
