@@ -1,3 +1,5 @@
 * [MongoDB 是什么](/mongodb/)
 * [安装 MongoDB](/mongodb/install)
-* [基本操作](/mongodb/operation)
+* [数据库 和 集合 的基本操作](/mongodb/db-collections-operation)
+* [文档的 CURD](/mongodb/document-curd)
+* [进阶查询](/mongodb/query)

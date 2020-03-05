@@ -21,3 +21,12 @@
 
 
 我学习 `MongoDB` 是因为想尝试 `NoSQL` ，并且集合的形势很像 `Json` 。
+
+
+
+### 学习方式
+
+现在在跟着b站 黑马程序员 的 [MongoDB 基础入门到高级进阶](https://www.bilibili.com/video/av80450883) 和 [菜鸟教程](https://www.runoob.com/mongodb/mongodb-tutorial.html) 来相互补充学习。
+
+当然，如果**直接看文档类的 [菜鸟教程](https://www.runoob.com/mongodb/mongodb-tutorial.html) 效率是最高的**
+
