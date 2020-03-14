@@ -1,10 +1,8 @@
-# web 开发
+# 静态资源映射
 
 
 
-## 静态资源映射
-
-### 源码
+## 源码
 
 在 ide中可以双击 <kbd>Shift</kbd> 打开搜索，找到 `WebMvcAutoConfiguration.class` 中的 `addResourceHandlers` 方法。
 
@@ -32,7 +30,7 @@ public void addResourceHandlers(ResourceHandlerRegistry registry) {
 
 
 
-### webjars
+## webjars
 
 在 [webjars](https://www.webjars.org/) 中找到需要的依赖，添加到 `pom.xml` 文件中，之后就可以在 `webjars/**` 中找到
 
@@ -50,7 +48,7 @@ public void addResourceHandlers(ResourceHandlerRegistry registry) {
 
 
 
-### 静态目录
+## 静态目录
 
 只要找不到处理的，就匹配以下文件夹中的文件。可以在 `ResourceProperties.class` 里找到文件夹的列表
 
@@ -82,7 +80,7 @@ classpath:/public/
 
 
 
-### 欢迎文件(index.html)
+## 欢迎文件(index.html)
 
 同样是在 `WebMvcAutoConfiguration.class` 中，处理欢迎页面是在 `WelcomePageHandlerMapping` 方法中
 

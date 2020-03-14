@@ -88,16 +88,21 @@ person: {name: 张三,gender: 男,age: 22}
 
 ## 配置文件注入
 
-在 `pron.xml` 文件中加入
+第一次使用 `@ConfigurationProperties` 注解时会在上面弹出提示
+
+![](http://markdown.yeek.top/20200226182608.png)
+
+需要在 `pom.xml` 中添加以下依赖
 
 ```xml
-        <!--导入配置文件处理器，配置文件进行绑定就会有提示-->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-configuration-processor</artifactId>
-            <optional>true</optional>
-        </dependency>
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-configuration-processor</artifactId>
+    <optional>true</optional>
+</dependency>
 ```
+
+然后重新运行 Application 即可
 
 
 

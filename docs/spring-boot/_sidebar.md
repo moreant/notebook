@@ -4,4 +4,6 @@
 
 * [配置信息](/spring-boot/properties)
 * [日志](/spring-boot/log)
-* [web 开发](/spring-boot/web)
+* [静态资源映射](/spring-boot/static)
+* [Lombok](/spring-boot/lombok)
+
